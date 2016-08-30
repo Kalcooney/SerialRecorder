@@ -1,5 +1,6 @@
 package com.example.kaleb.serialrecorder;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,9 @@ public class MainMenu extends AppCompatActivity {
 
     //onClick method for the New Item Button. When clicked goes to the New Item Activity
     public void newItemClicked(View view){
+        //Intent to switch screen to newItemActivity.
+        Intent newItemActivity = new Intent(this, NewItemActivity.class);
+        startActivity(newItemActivity);
 
     }
 

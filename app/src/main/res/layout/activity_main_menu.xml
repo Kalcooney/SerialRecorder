@@ -14,44 +14,44 @@
         android:layout_height="wrap_content"
         android:text="@string/new_item"
         android:id="@+id/newItemButton"
-        android:layout_marginBottom="44dp"
         android:onClick="newItemClicked"
-        android:layout_above="@+id/viewItemsButton"
+        android:width="125dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:width="125dp" />
+        android:layout_marginTop="50dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/view_items"
         android:id="@+id/viewItemsButton"
-        android:layout_marginBottom="45dp"
         android:onClick="viewItemsClicked"
-        android:layout_above="@+id/helpButton"
-        android:layout_centerHorizontal="true"
-        android:width="125dp" />
+        android:width="125dp"
+        android:layout_below="@+id/newItemButton"
+        android:layout_alignLeft="@+id/newItemButton"
+        android:layout_alignStart="@+id/newItemButton"
+        android:layout_marginTop="63dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/help"
         android:id="@+id/helpButton"
+        android:onClick="helpClicked"
+        android:width="125dp"
         android:layout_above="@+id/aboutButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="53dp"
-        android:onClick="helpClicked"
-        android:width="125dp" />
+        android:layout_marginBottom="60dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/about"
         android:id="@+id/aboutButton"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="51dp"
         android:onClick="aboutClicked"
+        android:width="125dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/helpButton"
-        android:layout_alignStart="@+id/helpButton"
-        android:width="125dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
