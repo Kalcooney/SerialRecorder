@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.kaleb.serialrecorder.MainMenu">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_item"
+        android:id="@+id/newItemButton"
+        android:layout_marginBottom="44dp"
+        android:onClick="newItemClicked"
+        android:layout_above="@+id/viewItemsButton"
+        android:layout_centerHorizontal="true"
+        android:width="125dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_items"
+        android:id="@+id/viewItemsButton"
+        android:layout_marginBottom="45dp"
+        android:onClick="viewItemsClicked"
+        android:layout_above="@+id/helpButton"
+        android:layout_centerHorizontal="true"
+        android:width="125dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/help"
+        android:id="@+id/helpButton"
+        android:layout_above="@+id/aboutButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="53dp"
+        android:onClick="helpClicked"
+        android:width="125dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about"
+        android:id="@+id/aboutButton"
+        android:layout_marginBottom="75dp"
+        android:onClick="aboutClicked"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/helpButton"
+        android:layout_alignStart="@+id/helpButton"
+        android:width="125dp" />
+
+</RelativeLayout>

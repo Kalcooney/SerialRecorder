@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SerialRecorder</string>
+    <string name="new_item">New Item</string>
+    <string name="view_items">View Items</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+</resources>
