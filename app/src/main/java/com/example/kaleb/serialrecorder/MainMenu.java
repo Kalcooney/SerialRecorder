@@ -35,6 +35,8 @@ public class MainMenu extends AppCompatActivity {
 
     //onClick method for the About Activity. When clicked goes to the About Activity
     public void aboutClicked(View view){
-
+        //Intent to switch screen to aboutActivity
+        Intent aboutActivity = new Intent(this, AboutActivity.class);
+        startActivity(aboutActivity);
     }
 }
