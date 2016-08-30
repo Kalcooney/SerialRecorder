@@ -28,7 +28,9 @@ public class MainMenu extends AppCompatActivity {
 
     //onClick method for the Help Button. When clicked goes to the Help Activity
     public void helpClicked(View view){
-
+        //Intent to switch screen to helpActivity
+        Intent helpActivity = new Intent(this, HelpActivity.class);
+        startActivity(helpActivity);
     }
 
     //onClick method for the About Activity. When clicked goes to the About Activity
