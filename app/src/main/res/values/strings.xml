@@ -4,4 +4,10 @@
     <string name="view_items">View Items</string>
     <string name="help">Help</string>
     <string name="about">About</string>
+    <string name="item_name_input">Item Name</string>
+    <string name="item_description_input">Item Description</string>
+    <string name="serial_number_input">Serial Number</string>
+    <string name="purchase_date_input">Purchase Date</string>
+    <string name="take_photo_button">Take Photo</string>
+    <string name="choose_from_gallery_button">Choose from Gallery</string>
 </resources>

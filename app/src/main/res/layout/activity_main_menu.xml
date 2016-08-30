@@ -39,9 +39,9 @@
         android:id="@+id/helpButton"
         android:onClick="helpClicked"
         android:width="125dp"
+        android:layout_marginBottom="60dp"
         android:layout_above="@+id/aboutButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
