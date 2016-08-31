@@ -23,7 +23,8 @@ public class MainMenu extends AppCompatActivity {
 
     //onClick method for the View Items Button. When clicked goes to the View Items Activity
     public void viewItemsClicked(View view){
-
+        Intent viewItemsActivity = new Intent(this, ViewItemsActivity.class);
+        startActivity(viewItemsActivity);
     }
 
     //onClick method for the Help Button. When clicked goes to the Help Activity

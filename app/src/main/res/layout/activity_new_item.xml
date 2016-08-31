@@ -55,10 +55,11 @@
         android:text="@string/take_photo_button"
         android:id="@+id/takePhotoButton"
         android:onClick="takePhotoClicked"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/datePurchasedInput"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:width="170dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -68,5 +69,19 @@
         android:onClick="galleryClicked"
         android:layout_alignTop="@+id/takePhotoButton"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:width="170dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/addButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp"
+        android:onClick="addButtonClicked"
+        android:width="100dp" />
+
 </RelativeLayout>
