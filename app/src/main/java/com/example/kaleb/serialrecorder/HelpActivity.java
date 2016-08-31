@@ -11,7 +11,7 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        //reference the textview containing the helpText
+        //reference the Textview containing the helpText
         TextView helpText = (TextView) findViewById(R.id.helpText);
         //set a whole bunch of sample text
         helpText.setText("This is some sample text. This section will eventually contain " +
