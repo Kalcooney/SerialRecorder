@@ -3,8 +3,10 @@ package com.example.kaleb.serialrecorder;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class NewItemActivity extends AppCompatActivity {
 
@@ -26,12 +28,25 @@ public class NewItemActivity extends AppCompatActivity {
         dbHandler = new MyDBHandler(this, null, null, 1);
     }
 
-    //onClick method for the addButton
-    public void addButtonClicked(View view){
-        Items item = new Items(itemDescriptionInput.getText().toString(),
-                itemNameInput.getText().toString(), serialNumberInput.getText().toString());
-        dbHandler.addItem(item);
-        Intent mainMenu = new Intent(this, MainMenu.class);
-        startActivity(mainMenu);
+    //add actions to the action bar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.new_item_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //if action is selected perform an action
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case(R.id.action_tick):
+                Items userItem = new Items(itemDescriptionInput.getText().toString(),
+                        itemNameInput.getText().toString(), serialNumberInput.getText().toString());
+                dbHandler.addItem(userItem);
+                Intent mainMenu = new Intent(this, MainMenu.class);
+                startActivity(mainMenu);
+                Toast.makeText(this, "Successfully added", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
