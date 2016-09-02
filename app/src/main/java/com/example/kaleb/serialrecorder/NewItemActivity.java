@@ -3,6 +3,8 @@ package com.example.kaleb.serialrecorder;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,9 +17,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class NewItemActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int SELECT_PHOTO = 2;
 
     //declare the views we are going to use
     EditText itemNameInput;
@@ -56,14 +62,39 @@ public class NewItemActivity extends AppCompatActivity {
         startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
     }
 
-    //return image taken
+    //if add to gallery button is clicked
+    public void galleryClicked(View view){
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent, SELECT_PHOTO);
+    }
+
+    //return image taken or image chosen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
-            //get the photo
-            Bundle extras = data.getExtras();
-            Bitmap photo = (Bitmap) extras.get("data");
-            itemImageView.setImageBitmap(photo);
+        switch(requestCode){
+            //if take photo button clicked then request image capture
+            case(REQUEST_IMAGE_CAPTURE):
+                if (resultCode == RESULT_OK) {
+                    //get the photo
+                    Bundle extras = data.getExtras();
+                    Bitmap photo = (Bitmap) extras.get("data");
+                    itemImageView.setImageBitmap(photo);
+                    break;
+                }
+             //if add from gallery chosen then select photo from gallery
+            case(SELECT_PHOTO):
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = data.getData();
+                    InputStream imageStream = null;
+                    try{
+                        imageStream = getContentResolver().openInputStream(selectedImage);
+                    } catch (FileNotFoundException e){
+                        e.printStackTrace();
+                    }
+                    itemImageView.setImageURI(selectedImage);
+                    break;
+                }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
