@@ -11,4 +11,5 @@
     <string name="take_photo_button">Take Photo</string>
     <string name="choose_from_gallery_button">Add from Gallery</string>
     <string name="action_tick">action_tick</string>
+    <string name="action_back">back_arrow</string>
 </resources>

@@ -68,11 +68,11 @@
             android:layout_height="wrap_content"
             android:text="@string/take_photo_button"
             android:id="@+id/takePhotoButton"
-            android:onClick="takePhotoClicked"
-            android:layout_below="@+id/datePurchasedInput"
+            android:onClick="launchCamera"
+            android:layout_alignBaseline="@+id/galleryButton"
+            android:layout_alignBottom="@+id/galleryButton"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="106dp" />
+            android:layout_alignParentStart="true" />
 
         <Button
             android:layout_width="wrap_content"
@@ -80,9 +80,19 @@
             android:text="@string/choose_from_gallery_button"
             android:id="@+id/galleryButton"
             android:onClick="galleryClicked"
-            android:layout_alignTop="@+id/takePhotoButton"
+            android:layout_below="@+id/itemImageView"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemImageView"
+            android:nestedScrollingEnabled="true"
+            android:minWidth="300dp"
+            android:minHeight="150dp"
+            android:layout_below="@+id/datePurchasedInput"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </ScrollView>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.kaleb.serialrecorder.NewItemActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="com.example.kaleb.serialrecorder.NewItemActivity">
 
-    <item
-        android:id="@+id/action_tick"
-        android:icon="@mipmap/tick"
-        android:title="@string/action_tick"
-        app:showAsAction="always"/>
+<item
+    android:id="@+id/action_tick"
+    android:icon="@mipmap/tick"
+    android:title="@string/action_tick"
+    app:showAsAction="always"/>
 
 </menu>
