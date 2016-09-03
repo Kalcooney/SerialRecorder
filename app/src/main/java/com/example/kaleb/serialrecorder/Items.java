@@ -9,6 +9,7 @@ public class Items {
     private String _itemName; //This is the attribute for the Item Name
     private String _itemDescription; //This is the attribute for the Item Description
     private String _serialNumber; //This is the attribute for the Item Serial Number
+    private String _datePurchased; //This is the attribute for the date entered for the item
 
     //Empty constructor so we don't always have to an itemName, Description AND serialNumber
     public Items(){
@@ -16,7 +17,8 @@ public class Items {
     }
 
     //Constructor for user inputs
-    public Items(String itemDescription, String itemName, String serialNumber) {
+    public Items(String datePurchased, String itemDescription, String itemName, String serialNumber) {
+        this._datePurchased = datePurchased;
         this._itemDescription = itemDescription;
         this._itemName = itemName;
         this._serialNumber = serialNumber;
@@ -42,6 +44,11 @@ public class Items {
         this._serialNumber = _serialNumber;
     }
 
+    //Set method for Date Purchased
+    public void set_datePurchased(String _datePurchased) {
+        this._datePurchased = _datePurchased;
+    }
+
     //Get method for id
     public int get_id() {
         return _id;
@@ -60,5 +67,10 @@ public class Items {
     //Get method for Serial Number
     public String get_serialNumber() {
         return _serialNumber;
+    }
+
+    //Get method for datePurchased
+    public String get_datePurchased() {
+        return _datePurchased;
     }
 }

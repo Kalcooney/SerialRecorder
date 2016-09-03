@@ -11,13 +11,14 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class MyDBHandler  extends SQLiteOpenHelper{
 
-    private static final int DATABASE_VERSION = 1; //current version of the database
+    private static final int DATABASE_VERSION = 2; //current version of the database
     private static final String DATABASE_NAME = "items.db"; //the name of the database
     public static final String TABLE_ITEMS = "Items"; //name of the table
     public static final String COLUMN_ID = "_id"; //column for the item ID
     public static final String COLUMN_NAME = "itemName"; //column for the item Name
     public static final String COLUMN_DESCRIPTION = "itemDescription"; //column for the item Description
     public static final String COLUMN_SERIALNUMBER = "serialNumber"; //column for the item Serial Number
+    public static final String COLUMN_DATEPURCHASED = "datePurchased"; //column for the Date that item was purchased
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -30,7 +31,8 @@ public class MyDBHandler  extends SQLiteOpenHelper{
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_DESCRIPTION + " TEXT, " +
-                COLUMN_SERIALNUMBER + " TEXT " + ");";
+                COLUMN_SERIALNUMBER + " TEXT, " +
+                COLUMN_DATEPURCHASED + " TEXT " + ");";
         sqLiteDatabase.execSQL(query);
     }
 
@@ -46,6 +48,7 @@ public class MyDBHandler  extends SQLiteOpenHelper{
         values.put(COLUMN_NAME, items.get_itemName());
         values.put(COLUMN_DESCRIPTION, items.get_itemDescription());
         values.put(COLUMN_SERIALNUMBER, items.get_serialNumber());
+        values.put(COLUMN_DATEPURCHASED, items.get_datePurchased());
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.insert(TABLE_ITEMS, null, values);
         sqLiteDatabase.close();
@@ -62,11 +65,11 @@ public class MyDBHandler  extends SQLiteOpenHelper{
         c.moveToFirst();
 
         while(!c.isAfterLast()) {
-            if (c.getString(c.getColumnIndex("itemName")) != null) {
-                dbString += c.getString(c.getColumnIndex("itemName"));
+            if (c.getString(c.getColumnIndex("datePurchased")) != null) {
+                dbString += c.getString(c.getColumnIndex("datePurchased"));
                 dbString += "\t";
-                if (c.getString(c.getColumnIndex("itemDescription")) != null) {
-                    dbString += c.getString(c.getColumnIndex("itemDescription"));
+                if (c.getString(c.getColumnIndex("itemName")) != null) {
+                    dbString += c.getString(c.getColumnIndex("itemName"));
                     dbString += "\t";
                     if (c.getString(c.getColumnIndex("serialNumber")) != null) {
                         dbString += c.getString(c.getColumnIndex("serialNumber"));

@@ -143,8 +143,9 @@ public class NewItemActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case(R.id.action_tick):
-                Items userItem = new Items(itemDescriptionInput.getText().toString(),
-                        itemNameInput.getText().toString(), serialNumberInput.getText().toString());
+                Items userItem = new Items(datePurchasedInput.getText().toString(),
+                        itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
+                        serialNumberInput.getText().toString());
                 dbHandler.addItem(userItem);
                 Intent mainMenu = new Intent(this, MainMenu.class);
                 startActivity(mainMenu);
