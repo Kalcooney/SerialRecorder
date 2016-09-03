@@ -1,5 +1,6 @@
 package com.example.kaleb.serialrecorder;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -13,12 +14,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class NewItemActivity extends AppCompatActivity {
 
@@ -29,6 +34,7 @@ public class NewItemActivity extends AppCompatActivity {
     EditText itemNameInput;
     EditText itemDescriptionInput;
     EditText serialNumberInput;
+    EditText datePurchasedInput;
     ImageView itemImageView;
     MyDBHandler dbHandler;
 
@@ -42,14 +48,40 @@ public class NewItemActivity extends AppCompatActivity {
         itemNameInput = (EditText) findViewById(R.id.itemNameInput);
         itemDescriptionInput = (EditText) findViewById(R.id.itemDescriptionInput);
         serialNumberInput = (EditText) findViewById(R.id.serialNumberInput);
+        datePurchasedInput = (EditText) findViewById(R.id.datePurchasedInput);
         itemImageView = (ImageView) findViewById(R.id.itemImageView);
         dbHandler = new MyDBHandler(this, null, null, 1);
 
         //disable the buttons if the user doesn't have a camera
         if(!hasCamera())
             takePhotoButton.setEnabled(false);
+        }
+
+    //create a new calendar object and set it to a DatePicker
+    Calendar myCalendar = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener datePicker = new DatePickerDialog.OnDateSetListener(){
+        @Override
+        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+            myCalendar.set(Calendar.YEAR, i);
+            myCalendar.set(Calendar.MONTH, i1);
+            myCalendar.set(Calendar.DAY_OF_MONTH, i2);
+            updateLabel();
 
         }
+    };
+
+    //onClick method for DatePurchased
+    public void datePurchasedClicked(View view){
+        new DatePickerDialog(NewItemActivity.this, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH
+        ), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    //formats the date text
+    private void updateLabel(){
+        String dateFormat = "dd-MM-yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.ENGLISH);
+        datePurchasedInput.setText(sdf.format(myCalendar.getTime()));
+    }
 
     //check if user has a camera
     private boolean hasCamera(){

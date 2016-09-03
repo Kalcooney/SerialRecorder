@@ -61,7 +61,9 @@
             android:layout_below="@+id/serialNumberInput"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="30dp"
+            android:focusable="false"
+            android:onClick="datePurchasedClicked" />
 
         <Button
             android:layout_width="wrap_content"
@@ -80,19 +82,22 @@
             android:text="@string/choose_from_gallery_button"
             android:id="@+id/galleryButton"
             android:onClick="galleryClicked"
-            android:layout_below="@+id/itemImageView"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@+id/datePurchasedInput"
+            android:layout_alignRight="@+id/datePurchasedInput"
+            android:layout_alignEnd="@+id/datePurchasedInput"
+            android:layout_marginTop="193dp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/itemImageView"
+            android:layout_weight="1.0"
             android:nestedScrollingEnabled="true"
             android:minWidth="300dp"
             android:minHeight="150dp"
-            android:layout_below="@+id/datePurchasedInput"
-            android:layout_centerHorizontal="true" />
+            android:layout_above="@+id/takePhotoButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="21dp" />
 
     </RelativeLayout>
 </ScrollView>
