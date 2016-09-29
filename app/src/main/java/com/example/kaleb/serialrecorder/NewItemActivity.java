@@ -1,15 +1,19 @@
 package com.example.kaleb.serialrecorder;
 
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,16 +23,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class NewItemActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int SELECT_PHOTO = 2;
+    private File output = null; //filepath for user taken image
+    private String path = null; //filepath for user taken image to place in database
 
     //declare the views we are going to use
     EditText itemNameInput;
@@ -55,7 +64,7 @@ public class NewItemActivity extends AppCompatActivity {
         //disable the buttons if the user doesn't have a camera
         if(!hasCamera())
             takePhotoButton.setEnabled(false);
-        }
+    }
 
     //create a new calendar object and set it to a DatePicker
     Calendar myCalendar = Calendar.getInstance();
@@ -88,8 +97,12 @@ public class NewItemActivity extends AppCompatActivity {
         return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
 
+    //launch the camera for user to take photo
     public void launchCamera(View view){
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+        output = new File(dir, TimeStamp() + ".jpeg");
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(output));
         //take picture and pass it on to onActivityResult
         startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
     }
@@ -109,12 +122,14 @@ public class NewItemActivity extends AppCompatActivity {
             case(REQUEST_IMAGE_CAPTURE):
                 if (resultCode == RESULT_OK) {
                     //get the photo
-                    Bundle extras = data.getExtras();
-                    Bitmap photo = (Bitmap) extras.get("data");
-                    itemImageView.setImageBitmap(photo);
-                    break;
-                }
-             //if add from gallery chosen then select photo from gallery
+                    Uri.fromFile(output);
+                    path = Uri.fromFile(output).toString();
+                    itemImageView.setImageURI(Uri.fromFile(output));
+
+            }
+
+            break;
+                //if add from gallery chosen then select photo from gallery
             case(SELECT_PHOTO):
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = data.getData();
@@ -131,6 +146,20 @@ public class NewItemActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    //method for getting current time to stamp on the image Filename
+    public static String TimeStamp(){
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String currentDateTime = dateFormat.format(new Date());
+
+            return currentDateTime;
+        } catch (Exception e){
+            e.printStackTrace();
+
+            return null;
+        }
+    }
+
     //add actions to the action bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -141,11 +170,11 @@ public class NewItemActivity extends AppCompatActivity {
     //if action is selected perform an action
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+       switch (item.getItemId()){
             case(R.id.action_tick):
                 Items userItem = new Items(datePurchasedInput.getText().toString(),
                         itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
-                        serialNumberInput.getText().toString());
+                        serialNumberInput.getText().toString(), path);
                 dbHandler.addItem(userItem);
                 Intent mainMenu = new Intent(this, MainMenu.class);
                 startActivity(mainMenu);

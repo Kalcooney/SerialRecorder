@@ -10,18 +10,21 @@ public class Items {
     private String _itemDescription; //This is the attribute for the Item Description
     private String _serialNumber; //This is the attribute for the Item Serial Number
     private String _datePurchased; //This is the attribute for the date entered for the item
+    private String _imagePath; //This is where we will store the path for the image
 
     //Empty constructor so we don't always have to an itemName, Description AND serialNumber
     public Items(){
 
     }
 
-    //Constructor for user inputs
-    public Items(String datePurchased, String itemDescription, String itemName, String serialNumber) {
+    //Constructor
+    public Items(String datePurchased, String itemDescription, String itemName, String serialNumber,
+                 String _imagePath) {
         this._datePurchased = datePurchased;
         this._itemDescription = itemDescription;
         this._itemName = itemName;
         this._serialNumber = serialNumber;
+        this._imagePath = _imagePath;
     }
 
     //Set method for id
@@ -49,6 +52,11 @@ public class Items {
         this._datePurchased = _datePurchased;
     }
 
+    //Set method for the image path
+    public void set_imagePath(String _imagePath) {
+        this._imagePath = _imagePath;
+    }
+
     //Get method for id
     public int get_id() {
         return _id;
@@ -72,5 +80,10 @@ public class Items {
     //Get method for datePurchased
     public String get_datePurchased() {
         return _datePurchased;
+    }
+
+    //Get method for the image path
+    public String get_imagePath() {
+        return _imagePath;
     }
 }

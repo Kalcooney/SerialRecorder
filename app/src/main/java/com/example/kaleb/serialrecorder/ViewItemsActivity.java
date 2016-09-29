@@ -1,30 +1,37 @@
 package com.example.kaleb.serialrecorder;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class ViewItemsActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class ViewItemsActivity extends AppCompatActivity{
 
     //declare the views we are going to use
-    TextView item;
-    MyDBHandler dbHandlerview;
+    private ListView itemListView;
+
+    public static ArrayList<String> itemArray = new ArrayList<String>(); //ArrayList that holds our items
+    MyDBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_items);
 
-        //reference the views we are going to use
-        item = (TextView) findViewById(R.id.item);
-        dbHandlerview = new MyDBHandler(this, null, null, 1);
-        printDatabase();
+        dbHandler = new MyDBHandler(this, null, null, 1);
+        dbHandler.getAllItems(); //get all items from our database
 
-    }
+        itemListView = (ListView) findViewById(R.id.itemListView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, itemArray); //set our item arraylist to an array adapter
+        itemListView.setAdapter(adapter); //set adapter to our listview
 
-    //method to print out database
-    public void printDatabase(){
-        String dbString = dbHandlerview.databaseToString();
-        item.setText(dbString);
     }
 }
