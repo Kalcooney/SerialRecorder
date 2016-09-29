@@ -118,6 +118,7 @@ public class MyDBHandler  extends SQLiteOpenHelper{
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
+        itemsList.clear(); //clear list so data isn't added multiple times
         if(cursor.moveToFirst()){
             do{
                 Items item = new Items();
