@@ -1,19 +1,13 @@
 package com.example.kaleb.serialrecorder;
 
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -66,6 +59,19 @@ public class NewItemActivity extends AppCompatActivity {
             takePhotoButton.setEnabled(false);
     }
 
+    //onClicks that wipe default field names when user wants to enter their information
+    public void itemNameClicked(View view){
+        itemNameInput.setText("");
+    }
+
+    public void itemDescriptionClicked(View view){
+        itemDescriptionInput.setText("");
+    }
+
+    public void serialNumberClicked(View view){
+        serialNumberInput.setText("");
+    }
+
     //create a new calendar object and set it to a DatePicker
     Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener datePicker = new DatePickerDialog.OnDateSetListener(){
@@ -100,9 +106,9 @@ public class NewItemActivity extends AppCompatActivity {
     //launch the camera for user to take photo
     public void launchCamera(View view){
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
-        output = new File(dir, TimeStamp() + ".jpeg");
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(output));
+        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM); //get the directory of which to store the images taken
+        output = new File(dir, TimeStamp() + ".jpeg"); //creates a filename with path for the image. (Timestamped to make each file have a unique name)
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(output)); //pass on Uri to onActivityResult
         //take picture and pass it on to onActivityResult
         startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
     }
@@ -121,11 +127,9 @@ public class NewItemActivity extends AppCompatActivity {
             //if take photo button clicked then request image capture
             case(REQUEST_IMAGE_CAPTURE):
                 if (resultCode == RESULT_OK) {
-                    //get the photo
-                    Uri.fromFile(output);
-                    path = Uri.fromFile(output).toString();
-                    itemImageView.setImageURI(Uri.fromFile(output));
-
+                    Uri.fromFile(output); //get the uri from the file we made in the output string
+                    path = Uri.fromFile(output).toString(); //set the filepath from Uri to a string (This is to pass on to the database entry)
+                    itemImageView.setImageURI(Uri.fromFile(output)); //displays image in imageview via the Uri.
             }
 
             break;

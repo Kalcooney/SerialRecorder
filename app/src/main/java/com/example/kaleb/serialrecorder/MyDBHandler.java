@@ -92,23 +92,6 @@ public class MyDBHandler  extends SQLiteOpenHelper{
         return dbString;
     }
 
-    //for testing purposes. REMOVE**
-    public String getImageUri(){
-        String uriString = "";
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String query = "SELECT imagePath FROM " + TABLE_ITEMS + " WHERE _id = 1;";
-
-        Cursor c = sqLiteDatabase.rawQuery(query, null);
-        c.moveToFirst();
-
-        if(c.getString(c.getColumnIndex("imagePath")) != null){
-            uriString = c.getString(c.getColumnIndex("imagePath"));
-        }
-
-        sqLiteDatabase.close();
-        return  uriString;
-    }
-
     //List of items in the database to populate the ListView with.
     public List<Items> getAllItems(){
         List<Items> itemsList = new ArrayList<Items>();
@@ -124,8 +107,10 @@ public class MyDBHandler  extends SQLiteOpenHelper{
                 Items item = new Items();
                 item.set_id(Integer.parseInt(cursor.getString(0)));
                 item.set_itemName(cursor.getString(1));
+                item.set_itemDescription(cursor.getString(2));
                 item.set_serialNumber(cursor.getString(3));
                 item.set_datePurchased(cursor.getString(4));
+                item.set_imagePath(cursor.getString(5));
 
                 String itemRow = cursor.getString(1) + "\n" + cursor.getString(3) + "\n" +
                         cursor.getString(4);
@@ -135,5 +120,90 @@ public class MyDBHandler  extends SQLiteOpenHelper{
         }
 
         return itemsList;
+    }
+
+    //gets the Item Name (displays in TextView)
+    public String getItemName(int id){
+        String itemName = "";
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String query = "SELECT itemName FROM " + TABLE_ITEMS + " WHERE _id = " + id + ";";
+
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        c.moveToFirst();
+
+        if(c.getString(c.getColumnIndex("itemName")) != null){
+            itemName = c.getString(c.getColumnIndex("itemName"));
+        }
+
+        sqLiteDatabase.close();
+        return itemName;
+    }
+
+    //gets the Item Description (displays in TextView)
+    public String getItemDescription(int id){
+        String itemDescription = "";
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String query = "SELECT itemDescription FROM " + TABLE_ITEMS + " WHERE _id = " + id + ";";
+
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        c.moveToFirst();
+
+        if(c.getString(c.getColumnIndex("itemDescription")) != null){
+            itemDescription = c.getString(c.getColumnIndex("itemDescription"));
+        }
+
+        sqLiteDatabase.close();
+        return itemDescription;
+    }
+
+    //gets the Item Serial Number (displays in TextView)
+    public String getSerialNumber(int id){
+        String itemSerialNumber = "";
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String query = "SELECT serialNumber FROM " + TABLE_ITEMS + " WHERE _id = " + id + ";";
+
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        c.moveToFirst();
+
+        if(c.getString(c.getColumnIndex("serialNumber")) != null){
+            itemSerialNumber = c.getString(c.getColumnIndex("serialNumber"));
+        }
+
+        sqLiteDatabase.close();
+        return itemSerialNumber;
+    }
+
+    //gets the Item DatePurchased (displays in TextView)
+    public String getDatePurchased(int id){
+        String datePurchased = "";
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String query = "SELECT datePurchased FROM " + TABLE_ITEMS + " WHERE _id = " + id + ";";
+
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        c.moveToFirst();
+
+        if(c.getString(c.getColumnIndex("datePurchased")) != null){
+            datePurchased = c.getString(c.getColumnIndex("datePurchased"));
+        }
+
+        sqLiteDatabase.close();
+        return datePurchased;
+    }
+
+    //gets the Image Uri (displays in ImageView)
+    public String getImageUri(int id){
+        String imageUri = "";
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String query = "SELECT imagePath FROM " + TABLE_ITEMS + " WHERE _id = " + id + ";";
+
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        c.moveToFirst();
+
+        if(c.getString(c.getColumnIndex("imagePath")) != null){
+            imageUri = c.getString(c.getColumnIndex("imagePath"));
+        }
+
+        sqLiteDatabase.close();
+        return imageUri;
     }
 }

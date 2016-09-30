@@ -40,9 +40,4 @@ public class MainMenu extends AppCompatActivity {
         Intent aboutActivity = new Intent(this, AboutActivity.class);
         startActivity(aboutActivity);
     }
-
-    public void testClicked(View view){
-        Intent testActivity = new Intent(this, Test.class);
-        startActivity(testActivity);
-    }
 }

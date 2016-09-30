@@ -25,7 +25,8 @@
             android:maxLines="1"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:onClick="itemNameClicked" />
 
         <EditText
             android:layout_width="match_parent"
@@ -37,7 +38,8 @@
             android:layout_marginTop="24dp"
             android:layout_below="@+id/itemNameInput"
             android:layout_alignRight="@+id/galleryButton"
-            android:layout_alignEnd="@+id/galleryButton" />
+            android:layout_alignEnd="@+id/galleryButton"
+            android:onClick="itemDescriptionClicked" />
 
         <EditText
             android:layout_width="match_parent"
@@ -49,7 +51,8 @@
             android:layout_marginTop="36dp"
             android:layout_below="@+id/itemDescriptionInput"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:onClick="serialNumberClicked" />
 
         <EditText
             android:layout_width="match_parent"
@@ -88,16 +91,15 @@
             android:layout_marginTop="193dp" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:id="@+id/itemImageView"
             android:layout_weight="1.0"
             android:nestedScrollingEnabled="true"
-            android:minWidth="300dp"
-            android:minHeight="150dp"
             android:layout_above="@+id/takePhotoButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="21dp" />
+            android:layout_marginBottom="21dp"
+            android:scaleType="fitXY"/>
 
     </RelativeLayout>
 </ScrollView>

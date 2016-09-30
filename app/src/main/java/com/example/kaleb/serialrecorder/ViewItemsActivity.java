@@ -1,6 +1,7 @@
 package com.example.kaleb.serialrecorder;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,17 @@ public class ViewItemsActivity extends AppCompatActivity{
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, itemArray); //set our item arraylist to an array adapter
         itemListView.setAdapter(adapter); //set adapter to our listview
+
+        itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent singleItemIntent = new Intent(view.getContext(), SingleItemActivity.class);
+                String id = String.valueOf(l + 1);
+                singleItemIntent.putExtra("ID", id);
+                startActivity(singleItemIntent);
+
+            }
+        });
 
     }
 }
