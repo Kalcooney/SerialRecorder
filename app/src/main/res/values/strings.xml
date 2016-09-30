@@ -12,4 +12,7 @@
     <string name="choose_from_gallery_button">Add from Gallery</string>
     <string name="action_tick">action_tick</string>
     <string name="action_back">back_arrow</string>
+    <string name="action_menu">action_menu</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="edit_item">Edit Item</string>
 </resources>

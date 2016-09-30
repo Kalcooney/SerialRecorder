@@ -27,7 +27,8 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".ViewItemsActivity" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".SingleItemActivity"></activity>
+        <activity android:name=".SingleItemActivity" />
+        <activity android:name=".EditItemActivity"></activity>
     </application>
 
 </manifest>
