@@ -12,13 +12,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_item"
+        android:text="Add Item"
         android:id="@+id/newItemButton"
+        android:layout_marginBottom="56dp"
         android:onClick="newItemClicked"
-        android:width="125dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:drawableLeft="@mipmap/add"
+        android:layout_above="@+id/viewItemsButton"
+        android:layout_alignLeft="@+id/viewItemsButton"
+        android:layout_alignStart="@+id/viewItemsButton"
+        android:width="150dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -26,11 +28,12 @@
         android:text="@string/view_items"
         android:id="@+id/viewItemsButton"
         android:onClick="viewItemsClicked"
-        android:width="125dp"
-        android:layout_below="@+id/newItemButton"
-        android:layout_alignLeft="@+id/newItemButton"
-        android:layout_alignStart="@+id/newItemButton"
-        android:layout_marginTop="63dp" />
+        android:width="150dp"
+        android:layout_above="@+id/helpButton"
+        android:layout_alignLeft="@+id/helpButton"
+        android:layout_alignStart="@+id/helpButton"
+        android:layout_marginBottom="48dp"
+        android:drawableLeft="@mipmap/viewlist" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,10 +41,11 @@
         android:text="@string/help"
         android:id="@+id/helpButton"
         android:onClick="helpClicked"
-        android:width="125dp"
+        android:width="150dp"
         android:layout_marginBottom="60dp"
         android:layout_above="@+id/aboutButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@mipmap/help" />
 
     <Button
         android:layout_width="wrap_content"
@@ -50,8 +54,9 @@
         android:id="@+id/aboutButton"
         android:layout_marginBottom="51dp"
         android:onClick="aboutClicked"
-        android:width="125dp"
+        android:width="150dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@mipmap/person" />
 
 </RelativeLayout>
