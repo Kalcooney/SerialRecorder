@@ -65,6 +65,7 @@ public class SingleItemActivity extends AppCompatActivity {
                 break;
             case(R.id.edit_item):
                 Intent editItemActivity = new Intent(this, EditItemActivity.class);
+                editItemActivity.putExtra("ID", getId);
                 startActivity(editItemActivity);
                 break;
         }

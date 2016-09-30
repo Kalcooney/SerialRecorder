@@ -61,6 +61,20 @@ public class MyDBHandler  extends SQLiteOpenHelper{
 
     }
 
+    //method that edits Items in the database
+    public void editItem(Items items, int id){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues updatedValues = new ContentValues();
+        updatedValues.put(COLUMN_NAME, items.get_itemName());
+        updatedValues.put(COLUMN_DESCRIPTION, items.get_itemDescription());
+        updatedValues.put(COLUMN_SERIALNUMBER, items.get_serialNumber());
+        updatedValues.put(COLUMN_DATEPURCHASED, items.get_datePurchased());
+        updatedValues.put(COLUMN_IMAGEPATH, items.get_imagePath());
+
+        sqLiteDatabase.update(TABLE_ITEMS, updatedValues, "_id=" + id, null);
+        sqLiteDatabase.close();
+    }
+
     //method that prints the database out
     public String databaseToString(){
         String dbString = "";

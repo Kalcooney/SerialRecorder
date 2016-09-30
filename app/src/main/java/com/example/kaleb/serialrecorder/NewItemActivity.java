@@ -184,8 +184,7 @@ public class NewItemActivity extends AppCompatActivity {
                        itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
                        serialNumberInput.getText().toString(), path);
                dbHandler.addItem(userItem);
-               Intent mainMenu = new Intent(this, MainMenu.class);
-               startActivity(mainMenu);
+               finish();
                Toast.makeText(this, "Successfully added", Toast.LENGTH_LONG).show();
         }
 
