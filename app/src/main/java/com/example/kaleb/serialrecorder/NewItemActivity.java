@@ -11,9 +11,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -46,7 +46,7 @@ public class NewItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_item);
 
         //reference the views we are going to use
-        Button takePhotoButton = (Button) findViewById(R.id.takePhotoButton);
+        ImageButton takePhotoButton = (ImageButton) findViewById(R.id.takePhotoButton);
         itemNameInput = (EditText) findViewById(R.id.itemNameInput);
         itemDescriptionInput = (EditText) findViewById(R.id.itemDescriptionInput);
         serialNumberInput = (EditText) findViewById(R.id.serialNumberInput);
