@@ -25,6 +25,7 @@ public class ViewItemsActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_items);
+        itemArray.clear(); //clear array each time activity is created so list items don't duplicate.
 
         dbHandler = new MyDBHandler(this, null, null, 1);
         dbHandler.getAllItems(); //get all items from our database

@@ -21,20 +21,20 @@ public class SingleItemActivity extends AppCompatActivity {
         int id = Integer.parseInt(getId);
 
         //reference the text and image views
-        TextView itemNameText = (TextView) findViewById(R.id.itemNameText);
-        TextView itemDescriptionText = (TextView) findViewById(R.id.itemDescriptionText);
-        TextView itemSerialNumberText = (TextView) findViewById(R.id.itemSerialNumberText);
-        TextView itemDatePurchasedText = (TextView) findViewById(R.id.itemDatePurchasedText);
+        TextView itemName = (TextView) findViewById(R.id.itemName);
+        TextView itemDescription = (TextView) findViewById(R.id.itemDescription);
+        TextView itemSerialNumber = (TextView) findViewById(R.id.itemSerialNumber);
+        TextView itemDatePurchased = (TextView) findViewById(R.id.itemDatePurchased);
         itemImage = (ImageView) findViewById(R.id.itemImage);
 
         dbHandler = new MyDBHandler(this, null, null, 1);
         getImageUri(id);
 
         //set text for TextViews
-        itemNameText.setText(dbHandler.getItemName(id));
-        itemDescriptionText.setText(dbHandler.getItemDescription(id));
-        itemSerialNumberText.setText(dbHandler.getSerialNumber(id));
-        itemDatePurchasedText.setText(dbHandler.getDatePurchased(id));
+        itemName.setText("Name: " + dbHandler.getItemName(id));
+        itemDescription.setText("Description: " + dbHandler.getItemDescription(id));
+        itemSerialNumber.setText("Serial Number: " + dbHandler.getSerialNumber(id));
+        itemDatePurchased.setText("Date Purchased: " + dbHandler.getDatePurchased(id));
 
     }
     //set the image to the ImageView

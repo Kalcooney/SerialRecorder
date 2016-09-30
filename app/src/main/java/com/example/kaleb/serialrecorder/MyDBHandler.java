@@ -112,8 +112,8 @@ public class MyDBHandler  extends SQLiteOpenHelper{
                 item.set_datePurchased(cursor.getString(4));
                 item.set_imagePath(cursor.getString(5));
 
-                String itemRow = cursor.getString(1) + "\n" + cursor.getString(3) + "\n" +
-                        cursor.getString(4);
+                String itemRow = "Name: " + cursor.getString(1) + "\n" + "Serial Number: " +
+                        cursor.getString(3) + "\n" + "Date Purchased: " + cursor.getString(4);
                 ViewItemsActivity.itemArray.add(itemRow);
                 itemsList.add(item);
             } while(cursor.moveToNext());
