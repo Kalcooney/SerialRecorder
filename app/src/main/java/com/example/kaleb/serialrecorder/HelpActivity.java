@@ -2,6 +2,8 @@ package com.example.kaleb.serialrecorder;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class HelpActivity extends AppCompatActivity {
@@ -10,6 +12,7 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //reference the Textview containing the helpText
         TextView helpText = (TextView) findViewById(R.id.helpText);
@@ -26,5 +29,16 @@ public class HelpActivity extends AppCompatActivity {
                 "ipsum lacinia nulla, in fringilla mi nibh id neque. Aenean quam nulla, cursus " +
                 "non nibh a, porta lobortis elit. Nulla condimentum luctus libero. Sed aliquam " +
                 "purus orci.");
+    }
+
+    //to handle up arrow event
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case(android.R.id.home):
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

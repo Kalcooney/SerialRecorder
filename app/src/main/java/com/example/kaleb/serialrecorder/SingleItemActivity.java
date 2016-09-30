@@ -20,6 +20,7 @@ public class SingleItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_item);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getId = getIntent().getExtras().getString("ID");
         int id = Integer.parseInt(getId);
@@ -59,9 +60,13 @@ public class SingleItemActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case(android.R.id.home):
+                finish();
+                break;
             case(R.id.edit_item):
                 Intent editItemActivity = new Intent(this, EditItemActivity.class);
                 startActivity(editItemActivity);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

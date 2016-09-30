@@ -44,6 +44,7 @@ public class NewItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //reference the views we are going to use
         ImageButton takePhotoButton = (ImageButton) findViewById(R.id.takePhotoButton);
@@ -175,14 +176,17 @@ public class NewItemActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
        switch (item.getItemId()){
-            case(R.id.action_tick):
-                Items userItem = new Items(datePurchasedInput.getText().toString(),
-                        itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
-                        serialNumberInput.getText().toString(), path);
-                dbHandler.addItem(userItem);
-                Intent mainMenu = new Intent(this, MainMenu.class);
-                startActivity(mainMenu);
-                Toast.makeText(this, "Successfully added", Toast.LENGTH_LONG).show();
+           case(android.R.id.home):
+               finish();
+               break;
+           case(R.id.action_tick):
+               Items userItem = new Items(datePurchasedInput.getText().toString(),
+                       itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
+                       serialNumberInput.getText().toString(), path);
+               dbHandler.addItem(userItem);
+               Intent mainMenu = new Intent(this, MainMenu.class);
+               startActivity(mainMenu);
+               Toast.makeText(this, "Successfully added", Toast.LENGTH_LONG).show();
         }
 
         return super.onOptionsItemSelected(item);
