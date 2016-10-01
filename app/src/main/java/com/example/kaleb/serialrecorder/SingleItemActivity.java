@@ -21,6 +21,7 @@ public class SingleItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_item);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("View Item");
 
         getId = getIntent().getExtras().getString("ID");
         int id = Integer.parseInt(getId);

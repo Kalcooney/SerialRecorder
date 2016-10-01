@@ -45,6 +45,7 @@ public class NewItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("New Item");
 
         //reference the views we are going to use
         ImageButton takePhotoButton = (ImageButton) findViewById(R.id.takePhotoButton);

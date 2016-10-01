@@ -2,11 +2,9 @@ package com.example.kaleb.serialrecorder;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.TextView;
 
 public class HelpActivity extends AppCompatActivity {
 
@@ -15,11 +13,13 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Help");
 
+        //reference the webview
         WebView browser = (WebView) findViewById(R.id.webView);
         WebSettings settings = browser.getSettings();
-        settings.setJavaScriptEnabled(true);
-        browser.loadUrl("file:///android_asset/help.html");
+        settings.setJavaScriptEnabled(true); //make sure javascript is enabled
+        browser.loadUrl("file:///android_asset/help.html"); //load the help screen as a html file stored within app.
     }
 
     //to handle up arrow event

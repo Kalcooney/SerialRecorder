@@ -20,6 +20,7 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("About");
 
         versionText = (TextView) findViewById(R.id.versionText);
         getVersionNumber(); //call method to set TextView text equal to the version number of the app

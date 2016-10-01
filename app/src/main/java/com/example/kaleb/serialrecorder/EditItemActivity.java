@@ -46,6 +46,7 @@ public class EditItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Edit Item");
 
         String getId = getIntent().getExtras().getString("ID");
         id = Integer.parseInt(getId);
