@@ -16,7 +16,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     //onClick method for the New Item Button. When clicked goes to the New Item Activity
-    public void newItemClicked(View view){
+    public void addItemClicked(View view){
         //Intent to switch screen to newItemActivity.
         Intent newItemActivity = new Intent(this, NewItemActivity.class);
         startActivity(newItemActivity);
@@ -30,16 +30,17 @@ public class MainMenu extends AppCompatActivity {
     }
 
     //onClick method for the Help Button. When clicked goes to the Help Activity
-    public void helpClicked(View view){
+    public void viewHelpClicked(View view){
         //Intent to switch screen to helpActivity
         Intent helpActivity = new Intent(this, HelpActivity.class);
         startActivity(helpActivity);
     }
 
     //onClick method for the About Activity. When clicked goes to the About Activity
-    public void aboutClicked(View view){
+    public void viewAboutClicked(View view){
         //Intent to switch screen to aboutActivity
         Intent aboutActivity = new Intent(this, AboutActivity.class);
         startActivity(aboutActivity);
     }
+
 }

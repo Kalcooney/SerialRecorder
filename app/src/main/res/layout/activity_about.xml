@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kaleb.serialrecorder.AboutActivity"
-    android:clickable="false">
+    android:clickable="false"
+    android:background="#f4f4f4">
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +70,7 @@
         android:id="@+id/webButton"
         android:onClick="webButtonClicked"
         android:nestedScrollingEnabled="false"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="20dp"
         android:drawableLeft="@mipmap/web"
         android:clickable="false"
         android:layout_below="@+id/emailAddressText"

@@ -8,7 +8,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -29,7 +29,7 @@
         <activity android:name=".ViewItemsActivity" />
         <activity android:name=".MainMenu" />
         <activity android:name=".SingleItemActivity" />
-        <activity android:name=".EditItemActivity"></activity>
+        <activity android:name=".EditItemActivity" />
     </application>
 
 </manifest>
