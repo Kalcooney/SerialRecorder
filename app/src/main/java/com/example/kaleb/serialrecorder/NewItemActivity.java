@@ -61,19 +61,6 @@ public class NewItemActivity extends AppCompatActivity {
             takePhotoButton.setEnabled(false);
     }
 
-    //onClicks that wipe default field names when user wants to enter their information
-    public void itemNameClicked(View view){
-        itemNameInput.setText("");
-    }
-
-    public void itemDescriptionClicked(View view){
-        itemDescriptionInput.setText("");
-    }
-
-    public void serialNumberClicked(View view){
-        serialNumberInput.setText("");
-    }
-
     //create a new calendar object and set it to a DatePicker
     Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener datePicker = new DatePickerDialog.OnDateSetListener(){
@@ -83,7 +70,6 @@ public class NewItemActivity extends AppCompatActivity {
             myCalendar.set(Calendar.MONTH, i1);
             myCalendar.set(Calendar.DAY_OF_MONTH, i2);
             updateLabel();
-
         }
     };
 

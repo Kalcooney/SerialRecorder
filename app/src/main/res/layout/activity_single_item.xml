@@ -22,18 +22,16 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/itemName"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="19dp" />
+            android:layout_below="@+id/itemNameLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/itemDescription"
-            android:layout_marginTop="40dp"
-            android:layout_below="@+id/itemName"
+            android:layout_below="@+id/itemDescriptionLabel"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -42,19 +40,18 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/itemSerialNumber"
-            android:layout_marginTop="48dp"
-            android:layout_below="@+id/itemDescription"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@+id/itemSerialNumberLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/itemDatePurchased"
-            android:layout_marginTop="48dp"
-            android:layout_below="@+id/itemSerialNumber"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/itemDatePurchasedLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -65,5 +62,52 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:scaleType="fitXY"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Item Name:"
+            android:id="@+id/itemNameLabel"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#3F51B5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Item Description:"
+            android:id="@+id/itemDescriptionLabel"
+            android:layout_below="@+id/itemName"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="18dp"
+            android:textColor="#3F51B5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Serial Number:"
+            android:id="@+id/itemSerialNumberLabel"
+            android:textColor="#3F51B5"
+            android:layout_below="@+id/itemDescription"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="26dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Purchase Date:"
+            android:id="@+id/itemDatePurchasedLabel"
+            android:textColor="#3F51B5"
+            android:layout_below="@+id/itemSerialNumber"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="26dp" />
     </RelativeLayout>
 </ScrollView>

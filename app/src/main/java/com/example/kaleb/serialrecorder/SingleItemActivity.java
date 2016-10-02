@@ -1,6 +1,7 @@
 package com.example.kaleb.serialrecorder;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,10 +38,10 @@ public class SingleItemActivity extends AppCompatActivity {
         getImageUri(id);
 
         //set text for TextViews
-        itemName.setText("Name: " + dbHandler.getItemName(id));
-        itemDescription.setText("Description: " + dbHandler.getItemDescription(id));
-        itemSerialNumber.setText("Serial Number: " + dbHandler.getSerialNumber(id));
-        itemDatePurchased.setText("Date Purchased: " + dbHandler.getDatePurchased(id));
+        itemName.setText(dbHandler.getItemName(id));
+        itemDescription.setText(dbHandler.getItemDescription(id));
+        itemSerialNumber.setText(dbHandler.getSerialNumber(id));
+        itemDatePurchased.setText(dbHandler.getDatePurchased(id));
 
     }
     //set the image to the ImageView
