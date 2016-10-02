@@ -58,7 +58,6 @@ public class ViewItemsActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    //if physical back button pressed, finish activity to conserve memory
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {

@@ -16,3 +16,8 @@ li{
 h3{
 	display:inline;
 }
+
+img{
+	display:inline-block;
+}
+

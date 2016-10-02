@@ -1,11 +1,13 @@
 package com.example.kaleb.serialrecorder;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -190,13 +192,28 @@ public class EditItemActivity extends AppCompatActivity {
                 finish();
                 break;
             case(R.id.action_tick):
-                Items editedItem = new Items(datePurchasedInput.getText().toString(),
-                        itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
-                        serialNumberInput.getText().toString(), path);
-                dbHandler.editItem(editedItem, id);
-                Intent mainMenu = new Intent(this, MainMenu.class);
-                startActivity(mainMenu);
-                Toast.makeText(this, "Successfully Edited", Toast.LENGTH_LONG).show();
+                //alert box to make sure user wants to confirm the item
+                new AlertDialog.Builder(this)
+                        .setTitle("Confirm entry")
+                        .setMessage("Are you sure you want to confirm this entry?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Items editedItem = new Items(datePurchasedInput.getText().toString(),
+                                        itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
+                                        serialNumberInput.getText().toString(), path);
+                                dbHandler.editItem(editedItem, id);
+                                Intent mainMenu = new Intent(EditItemActivity.this, MainMenu.class);
+                                startActivity(mainMenu);
+                                Toast.makeText(EditItemActivity.this, "Successfully Edited", Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .show();
+
         }
 
         return super.onOptionsItemSelected(item);
