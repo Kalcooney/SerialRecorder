@@ -1,91 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.kaleb.serialrecorder.AboutActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.kaleb.serialrecorder.AboutActivity"
-    android:clickable="false"
+    android:fillViewport="true"
     android:background="#f4f4f4">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Version: "
-        android:id="@+id/versionLabel"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/webButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F4F4F4">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/versionText"
-        android:layout_alignTop="@+id/versionLabel"
-        android:layout_alignLeft="@+id/myName"
-        android:layout_alignStart="@+id/myName" />
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/appInformationCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            card_view:cardCornerRadius="4dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/developedByLabel"
-        android:text="Developed By:"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:paddingLeft="20dp"
+                android:background="#FFFFFF">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Kaleb Cooper"
-        android:id="@+id/myName"
-        android:layout_above="@+id/emailAddressText"
-        android:layout_alignRight="@+id/emailAddressText"
-        android:layout_alignEnd="@+id/emailAddressText"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/appInformationLabel"
+                    android:text="App Information"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/emailAddressText"
-        android:text="kalebcooper@gmail.com"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/developedByLabel"
-        android:layout_centerHorizontal="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/labelText"
+                    android:text="Developed by:"
+                    android:layout_below="@+id/appInformationLabel"
+                    android:layout_marginTop="10dp"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="   kalebcooper.work"
-        android:id="@+id/webButton"
-        android:onClick="webButtonClicked"
-        android:nestedScrollingEnabled="false"
-        android:layout_marginTop="20dp"
-        android:drawableLeft="@mipmap/web"
-        android:clickable="false"
-        android:layout_below="@+id/emailAddressText"
-        android:layout_alignRight="@+id/emailAddressText"
-        android:layout_alignEnd="@+id/emailAddressText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/myName"
+                    android:text="Kaleb Cooper"
+                    android:layout_alignTop="@+id/labelText"
+                    android:layout_toRightOf="@+id/appInformationLabel"
+                    android:layout_toEndOf="@+id/appInformationLabel" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/aboutText"
-        android:text="This app was fully designed and developed by Kaleb Cooper. The reason why I created this app was for one of my assignments in my Mobile Applications Development class"
-        android:layout_below="@+id/versionLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="85dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/versionLabel"
+                    android:text="Version: "
+                    android:layout_below="@+id/labelText"
+                    android:layout_marginTop="10dp"/>
 
-</RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/versionText"
+                    android:layout_alignTop="@+id/versionLabel"
+                    android:layout_alignLeft="@+id/myName"
+                    android:layout_alignStart="@+id/myName" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/DescriptionText"
+                    android:text="This app was fully designed and developed by Kaleb Cooper. The reason why I created this app was for one of my assignments in my Mobile Applications Development class"
+                    android:layout_below="@+id/versionLabel"
+                    android:layout_alignLeft="@+id/versionLabel"
+                    android:layout_alignStart="@+id/versionLabel"
+                    android:layout_marginTop="25dp" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/contactInformationCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            card_view:cardCornerRadius="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:paddingLeft="20dp"
+                android:background="#FFFFFF"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/contactLabel"
+                    android:text="Contact Information"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="10dp"/>
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kalebcooper@gmail.com"
+                    android:id="@+id/emailButton"
+                    android:layout_below="@+id/contactLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="0dp"
+                    android:drawableLeft="@mipmap/email"
+                    android:drawablePadding="10dp"
+                    android:onClick="emailButtonClicked"
+                    android:textColor="#3F51B5" />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kalebcooper.work"
+                    android:id="@+id/websiteButton"
+                    android:layout_below="@+id/emailButton"
+                    android:layout_alignLeft="@+id/emailButton"
+                    android:layout_alignStart="@+id/emailButton"
+                    android:drawableLeft="@mipmap/web"
+                    android:padding="0dp"
+                    android:drawablePadding="10dp"
+                    android:onClick="webButtonClicked"
+                    android:textColor="#3F51B5" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

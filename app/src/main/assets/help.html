@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<script type="text/javascript">
+    function toggle(tag) {
+        var x=document.getElementsByName(tag)[0];
+        var a = x.parentNode
+        if (a.style.display=='block'){
+            a.style.display='none'
+        }else{
+            a.style.display='block'     
+        }
+    }
+
+
+    function init() {
+        //this function will add show hide functionality to paired list items,
+        //as long as the answer is a list item straight after the question list item.
+        //You can also have as many separate lists as you want.
+        //all lists must be contained within a div with id QA
+
+        var obj = document.getElementById('QA');
+        var elements = obj.getElementsByTagName('li');
+               var index = 1 
+        //add javascript to question elements
+              //you could also add styling to question elements here
+        for (var i=0; i < elements.length; i+=2){
+            var element = elements[i]; 
+            element.innerHTML = "<a href='javascript:toggle(" + index + ")'>" + element.innerHTML + "</a>"
+            index = index + 1
+        } 
+        //add bookmark to answer elements and add styling
+        var index = 1
+        for (var i=1; i < elements.length; i+=2){
+            var element = elements[i]; 
+            element.innerHTML = "<a name='" + index + "' id='" + index + "'></a>" + element.innerHTML 
+            index = index + 1
+                 element.style.padding = '0px 0px 10px 20px' //add indent to answer
+                       element.style.listStyleType = 'none' //remove bullet
+            element.style.display = 'none' //hide answer element
+        }       
+     }
+
+
+window.onload = init; 
+
+</script>
+</head>
+<body>
+<div id="QA">
+	<ul>
+		<li>What is this app?</li>
+		<li><br>SerialRecorder is an app that allows you to save and store serial numbers for your items.
+			You can record the name, description, serial number, date of purchase and add an image for
+			your item.</li>
+	</ul>
+	<ul>
+		<li>How to use this app?</li>
+		<li><br><h3><mark>Add Item:</mark></h3>To add an item, firstly click the Add Item button in the Main Menu. Then: <br>
+			1. Enter in your item details by clicking on the input boxes.<br>
+			2. You can add an image by clicking on the camera button (left) or add the image
+				from your gallery by clicking on the gallery button (right) <br>
+			3. Confirm your selection by clicking the add button (top right corner)<br><br>
+			
+			<h3><mark>View Items:</mark></h3>To view your stored items, you only need to click on the View Items button
+			in the Main Menu. This then brings up a list of all your stored entries and displays the
+			item name, serial number for the item and the date that you purchased the item. <br>
+			To view the full entry of an item instead of the brief list view version, just click on
+			the entry in the list and it will bring you to a full version view of that entry.<br><br>
+			
+			<h3><mark>Edit Items:</mark></h3>To edit an entry for one of your items, do this: <br>
+			1. Click on View Items in Main Menu.<br>
+			2. Click on the item in the list that you would like to edit.<br>
+			3. Click on the three dot button (top right corner) and press edit.<br>
+			You are then brought to the Edit Item screen. From here you can update your item information
+			simply by clicking on the fields and changing the information.<br>
+			To confirm your selection, simply click the add button (top right corner)
+			</li>
+	</ul>
+	<ul>
+		<li>How can you contact me?</li>
+		<li><br>You can get in touch with us through our email address: 
+			<a href="mailto:kalebcooper@gmail.com?Subject=SerialRecorder" target="_top">kalebcooper@gmail.com</a></li>
+	</ul>
+	<ul>
+		<li>Where can I place feedback or report issues?</li>
+		<li><br>You can place feedback or report issues here: <a href="mailto:kalebcooper@gmail.com?Subject=SerialRecorder" target="_top">kalebcooper@gmail.com</a></li>
+	</ul>
+	<ul>
+		<li>Is there any paid features in this app?</li>
+		<li><br>No. This app is completely free. Unlike other apps, all features within this
+			app can be used without any extra cost.</li>
+	</ul>
+	<ul>
+	<li>Why did you create this app?</li>
+	<li><br>I created this app as my chosen app for one of the assignments of a Mobile Applications Development class
+		I took. The assignment was about taking what we have learned so far in android development and
+		applying it to an application of our choice. I chose to do a serial number recording app because I wanted to
+		apply my knowledge to creating an app that someone out there could find useful.</li>
+	</ul>
+	<ul>
+		<li>Privacy Policy</li>
+		<li><br>We value your privacy and as such, this app doesn't send us any of your information. All
+			information you enter into the app is saved locally, so there is no need for us to store any
+			of your information on the web.</li>
+	</ul>
+
+</div>
+</div> 
+</body>
+</html>

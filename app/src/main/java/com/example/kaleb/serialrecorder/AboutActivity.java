@@ -48,6 +48,13 @@ public class AboutActivity extends AppCompatActivity {
         startActivity(webIntent);
     }
 
+    //opens up email client when button is clicked
+    public void emailButtonClicked(View view){
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", "kalebcooper@gmail.com", null));
+        startActivity(Intent.createChooser(emailIntent, "Choose an Email client :"));
+    }
+
     //to handle up arrow event
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
