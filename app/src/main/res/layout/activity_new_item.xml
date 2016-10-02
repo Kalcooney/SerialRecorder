@@ -1,147 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.kaleb.serialrecorder.NewItemActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#f4f4f4">
-    >
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context="com.example.kaleb.serialrecorder.NewItemActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="#f4f4f4">
+
+        <RelativeLayout
+            android:id="@+id/newItemLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <EditText
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemNameInput"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:layout_below="@+id/itemNameLabel"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemDescriptionInput"
+                android:maxLength="250"
+                android:maxLines="7"
+                android:layout_below="@+id/itemDescriptionLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/serialNumberInput"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:layout_below="@+id/serialNumberLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/datePurchasedInput"
+                android:focusable="false"
+                android:onClick="datePurchasedClicked"
+                android:layout_below="@+id/purchaseDateLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/itemImageView"
+                android:layout_weight="1.0"
+                android:nestedScrollingEnabled="true"
+                android:scaleType="fitXY"
+                android:layout_marginTop="43dp"
+                android:layout_below="@+id/datePurchasedInput"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Item Name:"
+                android:id="@+id/itemNameLabel"
+                android:textIsSelectable="true"
+                android:textColor="#3F51B5"
+                android:paddingLeft="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Item Description:"
+                android:id="@+id/itemDescriptionLabel"
+                android:layout_below="@+id/itemNameInput"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="30dp"
+                android:textColor="#3F51B5"
+                android:paddingLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Serial Number:"
+                android:id="@+id/serialNumberLabel"
+                android:layout_below="@+id/itemDescriptionInput"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="29dp"
+                android:textColor="#3F51B5"
+                android:paddingLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Purchase Date:"
+                android:id="@+id/purchaseDateLabel"
+                android:layout_marginTop="27dp"
+                android:layout_below="@+id/serialNumberInput"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="#3F51B5"
+                android:paddingLeft="5dp"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/takePhotoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        app:layout_anchor="@id/newItemLayout"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@mipmap/takephoto"
+        android:onClick="launchCamera" />
 
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/takePhotoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@mipmap/takephoto"
-            android:layout_gravity="bottom|right"
-            app:elevation="6dp"
-            app:fabSize="normal"
-            app:pressedTranslationZ="12dp"
-            app:borderWidth="0dp"
-            android:onClick="launchCamera"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignEnd="@+id/itemImageView"
-            android:layout_alignRight="@+id/itemImageView" />
-
-        <EditText
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/itemNameInput"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:layout_below="@+id/itemNameLabel"
-            android:layout_alignRight="@+id/takePhotoButton"
-            android:layout_alignEnd="@+id/takePhotoButton" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/itemDescriptionInput"
-            android:maxLength="250"
-            android:maxLines="7"
-            android:layout_below="@+id/itemDescriptionLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/serialNumberInput"
-            android:maxLength="15"
-            android:maxLines="1"
-            android:layout_below="@+id/serialNumberLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/datePurchasedInput"
-            android:focusable="false"
-            android:onClick="datePurchasedClicked"
-            android:layout_below="@+id/purchaseDateLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/itemImageView"
-            android:layout_weight="1.0"
-            android:nestedScrollingEnabled="true"
-            android:scaleType="fitXY"
-            android:layout_marginTop="43dp"
-            android:layout_below="@+id/datePurchasedInput"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Item Name:"
-            android:id="@+id/itemNameLabel"
-            android:textIsSelectable="true"
-            android:textColor="#3F51B5"
-            android:paddingLeft="5dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Item Description:"
-            android:id="@+id/itemDescriptionLabel"
-            android:layout_below="@+id/itemNameInput"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="30dp"
-            android:textColor="#3F51B5"
-            android:paddingLeft="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Serial Number:"
-            android:id="@+id/serialNumberLabel"
-            android:layout_below="@+id/itemDescriptionInput"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="29dp"
-            android:textColor="#3F51B5"
-            android:paddingLeft="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Purchase Date:"
-            android:id="@+id/purchaseDateLabel"
-            android:layout_marginTop="27dp"
-            android:layout_below="@+id/serialNumberInput"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#3F51B5"
-            android:paddingLeft="5dp"/>
-
-    </RelativeLayout>
-</ScrollView>
+</android.support.design.widget.CoordinatorLayout>

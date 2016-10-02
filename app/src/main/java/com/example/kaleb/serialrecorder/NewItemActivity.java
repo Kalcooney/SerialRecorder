@@ -48,7 +48,6 @@ public class NewItemActivity extends AppCompatActivity {
         setTitle("New Item");
 
         //reference the views we are going to use
-        ImageButton takePhotoButton = (ImageButton) findViewById(R.id.takePhotoButton);
         itemNameInput = (EditText) findViewById(R.id.itemNameInput);
         itemDescriptionInput = (EditText) findViewById(R.id.itemDescriptionInput);
         serialNumberInput = (EditText) findViewById(R.id.serialNumberInput);
@@ -57,8 +56,8 @@ public class NewItemActivity extends AppCompatActivity {
         dbHandler = new MyDBHandler(this, null, null, 1);
 
         //disable the buttons if the user doesn't have a camera
-        if(!hasCamera())
-            takePhotoButton.setEnabled(false);
+       if(!hasCamera())
+            findViewById(R.id.takePhotoButton).setEnabled(false);
     }
 
     //create a new calendar object and set it to a DatePicker
@@ -101,12 +100,12 @@ public class NewItemActivity extends AppCompatActivity {
         startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
     }
 
-    //if add to gallery button is clicked
+    /**if add to gallery button is clicked
     public void galleryClicked(View view){
         Intent galleryIntent = new Intent(Intent.ACTION_PICK);
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, SELECT_PHOTO);
-    }
+    } **/
 
     //return image taken or image chosen
     @Override
@@ -118,10 +117,10 @@ public class NewItemActivity extends AppCompatActivity {
                     Uri.fromFile(output); //get the uri from the file we made in the output string
                     path = Uri.fromFile(output).toString(); //set the filepath from Uri to a string (This is to pass on to the database entry)
                     itemImageView.setImageURI(Uri.fromFile(output)); //displays image in imageview via the Uri.
-            }
+                    break;
+                }
 
-            break;
-                //if add from gallery chosen then select photo from gallery
+            /**if add from gallery chosen then select photo from gallery
             case(SELECT_PHOTO):
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = data.getData();
@@ -132,9 +131,8 @@ public class NewItemActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     itemImageView.setImageURI(selectedImage);
-                    break;
+                    break; **/
                 }
-        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
