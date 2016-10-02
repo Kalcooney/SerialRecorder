@@ -51,6 +51,7 @@ public class EditItemActivity extends AppCompatActivity {
         String getId = getIntent().getExtras().getString("ID");
         id = Integer.parseInt(getId);
 
+
         //reference the views we are going to use
         itemNameInput = (EditText) findViewById(R.id.itemNameInput);
         itemDescriptionInput = (EditText) findViewById(R.id.itemDescriptionInput);
@@ -58,6 +59,7 @@ public class EditItemActivity extends AppCompatActivity {
         datePurchasedInput = (EditText) findViewById(R.id.datePurchasedInput);
         itemImageView = (ImageView) findViewById(R.id.itemImageView);
         dbHandler = new MyDBHandler(this, null, null, 1);
+        path = dbHandler.getImageUri(id);
 
         //prefill fields with already existing information
         itemNameInput.setText(dbHandler.getItemName(id));

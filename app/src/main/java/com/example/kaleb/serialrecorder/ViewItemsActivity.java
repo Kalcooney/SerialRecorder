@@ -3,6 +3,7 @@ package com.example.kaleb.serialrecorder;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,5 +56,16 @@ public class ViewItemsActivity extends AppCompatActivity{
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //if physical back button pressed, finish activity to conserve memory
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
