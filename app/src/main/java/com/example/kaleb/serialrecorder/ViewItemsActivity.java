@@ -1,14 +1,18 @@
 package com.example.kaleb.serialrecorder;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,8 +47,15 @@ public class ViewItemsActivity extends AppCompatActivity{
                 String id = String.valueOf(l + 1);
                 singleItemIntent.putExtra("ID", id);
                 startActivity(singleItemIntent);
+                finish();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.view_items_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     //to handle the up arrow event
@@ -53,6 +64,15 @@ public class ViewItemsActivity extends AppCompatActivity{
         switch (item.getItemId()){
             case (android.R.id.home):
                 finish();
+                break;
+            case(R.id.delete):
+                dbHandler.wipeDatabase();
+                finish();
+                Toast.makeText(ViewItemsActivity.this, "Items Deleted", Toast.LENGTH_LONG).show();
+                break;
+            case(R.id.help):
+                Intent launchHelp = new Intent(this, HelpActivity.class);
+                startActivity(launchHelp);
                 break;
         }
         return super.onOptionsItemSelected(item);

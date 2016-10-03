@@ -75,6 +75,13 @@ public class MyDBHandler  extends SQLiteOpenHelper{
         sqLiteDatabase.close();
     }
 
+    public void wipeDatabase(){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_ITEMS;
+        sqLiteDatabase.execSQL(query);
+        sqLiteDatabase.execSQL("DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + TABLE_ITEMS + "'");
+    }
+
     //method that prints the database out
     public String databaseToString(){
         String dbString = "";

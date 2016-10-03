@@ -180,7 +180,7 @@ public class EditItemActivity extends AppCompatActivity {
     //add actions to the action bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.new_item_activity_menu, menu);
+        getMenuInflater().inflate(R.menu.edit_item_activity_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -193,26 +193,31 @@ public class EditItemActivity extends AppCompatActivity {
                 break;
             case(R.id.action_tick):
                 //alert box to make sure user wants to confirm the item
-                new AlertDialog.Builder(this)
-                        .setTitle("Confirm entry")
-                        .setMessage("Are you sure you want to confirm this entry?")
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                Items editedItem = new Items(datePurchasedInput.getText().toString(),
-                                        itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
-                                        serialNumberInput.getText().toString(), path);
-                                dbHandler.editItem(editedItem, id);
-                                Intent mainMenu = new Intent(EditItemActivity.this, MainMenu.class);
-                                startActivity(mainMenu);
-                                Toast.makeText(EditItemActivity.this, "Successfully Edited", Toast.LENGTH_LONG).show();
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        })
-                        .show();
+                AlertDialog.Builder confirmBox = new AlertDialog.Builder(this, R.style.DialogStyle);
+                confirmBox.setTitle("Confirm entry");
+                confirmBox.setMessage("Are you sure you want to confirm this entry?");
+                confirmBox.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Items editedItem = new Items(datePurchasedInput.getText().toString(),
+                                itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
+                                serialNumberInput.getText().toString(), path);
+                        dbHandler.editItem(editedItem, id);
+                        Intent mainMenu = new Intent(EditItemActivity.this, MainMenu.class);
+                        startActivity(mainMenu);
+                        Toast.makeText(EditItemActivity.this, "Successfully Edited", Toast.LENGTH_LONG).show();
+                    }
+                });
+                confirmBox.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing as you want use to just return to what they were doing
+                    }
+                });
+                confirmBox.show();
+                break;
+            case(R.id.help):
+                Intent launchHelp = new Intent(this, HelpActivity.class);
+                startActivity(launchHelp);
+                break;
 
         }
 

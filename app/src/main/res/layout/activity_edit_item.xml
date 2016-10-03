@@ -139,5 +139,6 @@
         app:layout_anchorGravity="bottom|right|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@mipmap/takephoto"
-        android:onClick="launchCamera" />
+        android:onClick="launchCamera"
+        app:backgroundTint="@color/colorPrimaryDark" />
 </android.support.design.widget.CoordinatorLayout>

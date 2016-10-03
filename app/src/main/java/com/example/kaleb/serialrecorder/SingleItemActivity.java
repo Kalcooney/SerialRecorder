@@ -71,6 +71,10 @@ public class SingleItemActivity extends AppCompatActivity {
                 editItemActivity.putExtra("ID", getId);
                 startActivity(editItemActivity);
                 break;
+            case(R.id.help):
+                Intent launchHelp = new Intent(this, HelpActivity.class);
+                startActivity(launchHelp);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

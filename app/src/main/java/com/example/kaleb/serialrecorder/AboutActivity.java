@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -55,12 +56,22 @@ public class AboutActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(emailIntent, "Choose an Email client :"));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.about_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
     //to handle up arrow event
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case(android.R.id.home):
                 finish();
+                break;
+            case(R.id.help):
+                Intent launchHelp = new Intent(this, HelpActivity.class);
+                startActivity(launchHelp);
                 break;
         }
         return super.onOptionsItemSelected(item);

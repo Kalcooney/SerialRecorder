@@ -168,25 +168,30 @@ public class NewItemActivity extends AppCompatActivity {
                break;
            case(R.id.action_tick):
                //alert box to make sure user wants to confirm the item
-               new AlertDialog.Builder(this)
-                       .setTitle("Confirm entry")
-                       .setMessage("Are you sure you want to confirm this entry?")
-                       .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                           public void onClick(DialogInterface dialog, int which) {
-                               Items userItem = new Items(datePurchasedInput.getText().toString(),
-                                       itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
-                                       serialNumberInput.getText().toString(), path);
-                               dbHandler.addItem(userItem);
-                               finish();
-                               Toast.makeText(NewItemActivity.this, "Successfully added", Toast.LENGTH_LONG).show();
-                           }
-                       })
-                       .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                           public void onClick(DialogInterface dialog, int which) {
-                               // do nothing
-                           }
-                       })
-                       .show();
+               AlertDialog.Builder confirmBox = new AlertDialog.Builder(this, R.style.DialogStyle);
+               confirmBox.setTitle("Confirm entry");
+               confirmBox.setMessage("Are you sure you want to confirm this entry?");
+               confirmBox.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int which) {
+                       Items userItem = new Items(datePurchasedInput.getText().toString(),
+                               itemDescriptionInput.getText().toString(), itemNameInput.getText().toString(),
+                               serialNumberInput.getText().toString(), path);
+                       dbHandler.addItem(userItem);
+                       finish();
+                       Toast.makeText(NewItemActivity.this, "Item Successfully added", Toast.LENGTH_LONG).show();
+                   }
+               });
+               confirmBox.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int which) {
+                       // do nothing as you want the user to return to what they were doing
+                   }
+               });
+               confirmBox.show();
+               break;
+           case(R.id.help):
+               Intent launchHelp = new Intent(this, HelpActivity.class);
+               startActivity(launchHelp);
+               break;
 
         }
 
